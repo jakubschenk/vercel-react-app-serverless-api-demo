@@ -1,6 +1,6 @@
 {
   "functions": {
-    "src/api/hello.ts": {
+    "api/user.ts": {
       "memory": 1024,
       "maxDuration": 10
     }
