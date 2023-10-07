@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import fetch from "node-fetch";
 
 export default async function handler(
   request: VercelRequest,
@@ -11,12 +12,8 @@ export default async function handler(
   const hasParam = searchParams.has("param");
   const param = hasParam ? searchParams.get("param") : "noParam";
 
-  try {
-    const res = await fetch("https://randomuser.me/api/");
-    const user = await res.json();
+  const res = await fetch("https://randomuser.me/api/");
+  const user = await res.json();
 
-    return response.status(200).json({ user, param });
-  } catch (e) {
-    return response.status(403).json({ error: e });
-  }
+  return response.status(200).json({ user, param });
 }
